@@ -12,10 +12,10 @@ provider "azurerm" {
   skip_provider_registration = "true"
   features {}
 
-  subscription_id = var.subscription_id
-  client_id = var.client_id
-  client_secret = var.client_secret
-  tenant_id = var.tenant_id
+  subscription_id = var.SUBSCRIPTION_ID
+  client_id = var.CLIENT_ID
+  client_secret = var.CLIENT_SECRET
+  tenant_id = var.TENANT_ID
 }
 locals {
   config_mapping = {
@@ -117,7 +117,7 @@ resource "azurerm_linux_web_app" "webapp" {
 #  Deploy code from a public GitHub repo
 resource "azurerm_app_service_source_control" "sourcecontrol" {
   app_id             = azurerm_linux_web_app.webapp.id
-  repo_url           = "https://github.com/goncaloramospt/npm-sample-app"
+  repo_url           = "https://github.com/Azure-Samples/nodejs-docs-hello-world"
   branch             = "master"
   use_manual_integration = true
   use_mercurial      = false
