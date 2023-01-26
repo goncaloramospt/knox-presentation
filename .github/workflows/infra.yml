@@ -37,19 +37,22 @@ jobs:
 
       - name: Terraform Format
         id: fmt
+        working-directory: infra
         run: terraform fmt -check
 
       - name: Terraform Init
         id: init
+        working-directory: infra
         run: terraform init
 
       - name: Terraform Validate
         id: validate
+        working-directory: infra
         run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
-        if: github.event_name == 'pull_request'
+        working-directory: infra
         run: terraform plan -no-color -input=false
         continue-on-error: true
 
@@ -78,10 +81,12 @@ jobs:
             })
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
+        working-directory: infra
         run: exit 1
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: infra
         run: terraform apply -auto-approve -input=false
 
   decomission:
@@ -101,5 +106,6 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
+        working-directory: infra
         run: terraform destroy -auto-approve -input=false
 
