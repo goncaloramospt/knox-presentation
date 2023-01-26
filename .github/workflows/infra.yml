@@ -87,7 +87,7 @@ jobs:
   decomission:
     name: "Terraform: Decommission Infrastructure"
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.job-name == 'decomission' }}
+    if: ${{ github.event.inputs.infra-action == 'decomission' }}
 
     steps:
       - name: Checkout
