@@ -1,11 +1,12 @@
 name: JavaScript CI - Node.js Application
 
-on: [push]
+on:
+  workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: my-app   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'my-app-path'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '14.x'                # set this to the node version to use
+  AZURE_WEBAPP_NAME: 'knox-tf-webapp-486998'   # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'app/myExpressApp'      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '14.17.0'                # set this to the node version to use
 
 jobs:
 
