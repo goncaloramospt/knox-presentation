@@ -17,14 +17,14 @@ provider "azurerm" {
   client_secret = var.CLIENT_SECRET
   tenant_id = var.TENANT_ID
 }
-locals {
-  config_mapping = {
-    mykey = "myvalue"
-    mykey2 = "myvalue2"
-    mykey3 = "myvalue3"
-    mykey4 = "myvalue4"
-  }
-}
+# locals {
+#   config_mapping = {
+#     mykey = "myvalue"
+#     mykey2 = "myvalue2"
+#     mykey3 = "myvalue3"
+#     mykey4 = "myvalue4"
+#   }
+# }
 
 data "azurerm_client_config" "current" {}
 
@@ -72,26 +72,26 @@ resource "azurerm_key_vault_secret" "key-vault-secret" {
 }
 
 # App Config Provision
-resource "azurerm_app_configuration" "appconf" {
-  name                = var.app_config_name
-  resource_group_name = var.rg_name
-  location            = var.rg_location
-}
+# resource "azurerm_app_configuration" "appconf" {
+#   name                = var.app_config_name
+#   resource_group_name = var.rg_name
+#   location            = var.rg_location
+# }
 
-resource "null_resource" "demo_config_values" {
-  for_each = local.config_mapping
+# resource "null_resource" "demo_config_values" {
+#   for_each = local.config_mapping
 
-  provisioner "local-exec" {
-    command = "az appconfig kv set --connection-string $CONNECTION_STRING --key $KEY --value $VALUE --yes"
+#   provisioner "local-exec" {
+#     command = "az appconfig kv set --connection-string $CONNECTION_STRING --key $KEY --value $VALUE --yes"
 
-    environment = {
-      CONNECTION_STRING = azurerm_app_configuration.appconf.primary_write_key.0.connection_string
-      KEY               = each.key
-      VALUE             = each.value
-    }
-  }
+#     environment = {
+#       CONNECTION_STRING = azurerm_app_configuration.appconf.primary_write_key.0.connection_string
+#       KEY               = each.key
+#       VALUE             = each.value
+#     }
+#   }
 
-}
+# }
 
 # Create the Linux App Service Plan
 resource "azurerm_service_plan" "appserviceplan" {
