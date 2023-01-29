@@ -17,7 +17,7 @@ variable "TENANT_ID" {
 variable "rg_name" {
     description = "Resource Group Name"
     type = string
-    default = "knox-tf-rg"
+    default = "knox-tf-rg-2502"
 }
 variable "rg_location" {
     description = "Resource Group Location"
@@ -27,7 +27,7 @@ variable "rg_location" {
 variable "kv_name" {
     description = "Azure Key Vault Name"
     type = string
-    default = "knox-tf-kv"
+    default = "knox-tf-kv-2502"
 }
 variable "kv_location" {
     description = "Azure Key Vault Location"
@@ -67,5 +67,5 @@ variable "kv_secret_value" {
 variable "app_config_name" {
     description = "App Config Name"
     type = string
-    default = "knox-tf-app-config"
+    default = "knox-tf-app-config-2502"
 }
