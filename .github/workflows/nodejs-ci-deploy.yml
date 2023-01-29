@@ -32,7 +32,6 @@ jobs:
         npm install
         npm install @azure/keyvault-keys
         npm install @azure/identity
-        az keyvault set-policy --name "knox-tf-kv-2502" --upn goncalo91nuno_gmail.com#EXT#@goncalo91nunogmail.onmicrosoft.com --key-permissions delete get list create purge update
         npm run build --if-present
         npm run test --if-present
       working-directory:  ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
