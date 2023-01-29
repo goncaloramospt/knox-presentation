@@ -50,7 +50,7 @@ resource "azurerm_key_vault" "key-vault" {
   enabled_for_disk_encryption = var.kv_enabled_for_disk_encryption
   enabled_for_template_deployment = var.kv_enabled_for_template_deployment
 
-  tenant_id = var.tenant_id
+  tenant_id = var.TENANT_ID
   sku_name = var.kv_sku_name
 
   access_policy {
